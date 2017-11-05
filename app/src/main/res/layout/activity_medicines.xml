@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:scrollbars="horizontal|vertical"
+    tools:context="com.example.eltur.parkinsonbp.Medicines">
+
+
+    <LinearLayout
+        android:id="@+id/Linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:textDirection="rtl"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@android:color/white"
+            android:paddingTop="7dp"
+            android:text="האם נטלת היום את אחת מהתרופות הבאות?"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="האם נטלת היום את אחת מהתרופות הבאות?" />
+
+        <Button
+            android:id="@+id/btnSaveMedicine"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:text="שמור בחירה"
+            android:textSize="18sp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
+

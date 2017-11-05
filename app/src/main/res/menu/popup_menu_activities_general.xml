@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layoutDirection="rtl">
+    <group
+        android:id="@+id/general_group"
+        android:checkableBehavior="single">
+        <item android:title="בחר"
+            android:checkable="false"
+            android:enabled="false"></item>
+        <!--item android:id="@+id/one"
+            android:title="משפחה/כללי"
+            android:checked="true"
+            />
+        <item android:id="@+id/two"
+            android:title="נוירולוג"
+            />
+        <item android:id="@+id/three"
+            android:title="עיניים"
+            />
+        <item android:id="@+id/four"
+            android:title="אורתופדיה"
+            />
+        <item android:id="@+id/five"
+            android:title="נשים"
+            />
+        <item android:id="@+id/six"
+            android:title="כירורגיה"
+            />
+        <item android:id="@+id/seven"
+            android:title="אחר"
+            />-->
+
+    </group>
+
+
+</menu>

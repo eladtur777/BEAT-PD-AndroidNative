@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layoutDirection="rtl">
+
+    <group
+        android:id="@+id/tzrahim_group"
+        android:checkableBehavior="single">
+        <item android:title="כמה סיגריות?"
+            android:checkable="false"
+            android:enabled="false"></item>
+        <item android:id="@+id/one"
+            android:title="1-10 סיגריות"
+            android:checked="true"
+            />
+        <item android:id="@+id/two"
+            android:title="10-20 סיגריות"
+            />
+        <item android:id="@+id/three"
+            android:title="יותר מ-20"
+            />
+    </group>
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layoutDirection="rtl">
+
+    <group
+        android:id="@+id/habits_group"
+        android:checkableBehavior="single">
+        <item android:title="כמה כוסות?"
+            android:checkable="false"
+            android:enabled="false"></item>
+        <item android:id="@+id/one"
+            android:title="1-2 כוסות"
+            android:checked="true"
+            />
+        <item android:id="@+id/two"
+            android:title="3-4 כוסות"
+            />
+        <item android:id="@+id/three"
+            android:title="יותר מ-4"
+            />
+    </group>
+
+
+</menu>

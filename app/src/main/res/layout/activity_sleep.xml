@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:scrollbars="horizontal|vertical"
+    tools:context="com.example.eltur.parkinsonbp.Sleep">
+
+
+    <LinearLayout
+        android:id="@+id/Linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:textDirection="rtl"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@android:color/white"
+            android:paddingRight="3dp"
+            android:paddingTop="7dp"
+            android:text="שינה"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="שינה" />
+
+        <Button
+            android:id="@+id/btnSleepSave"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            android:text="שמור בחירה"
+            android:textSize="18sp"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
+
+        <EditText
+            android:id="@+id/txtBoxHoursNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="כמה שעות ישנת הלילה?"
+            android:ems="10"
+            android:hint="כמה שעות ישנת הלילה?"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txtBoxQualitySleepNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="איך היית מגדיר/ה את שנת הלילה שלך?"
+            android:ems="10"
+            android:hint="איך היית מגדיר/ה את שנת הלילה שלך?"
+
+            />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="האם הופיעו במשך השינה התופעות הבאות?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="האם הופיעו במשך השינה התופעות הבאות?" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
+

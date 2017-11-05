@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="@android:color/white">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:background="@android:color/background_light">
+
+        <EditText
+            android:id="@+id/UserId"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="50dp"
+            android:background="#E8F5E9"
+            android:contentDescription="שם משתמש"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:hint="שם משתמש"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/UserPassword"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="110dp"
+            android:background="#E8F5E9"
+            android:contentDescription="סיסמא"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:hint="סיסמא"
+            android:inputType="text|numberPassword"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="210dp"
+            android:background="@drawable/buttonshape"
+            android:fontFamily="sans-serif-condensed"
+            android:hint="כניסה"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="כניסה"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="300dp"
+            app:srcCompat="@drawable/hitnoborder" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="400dp"
+            app:srcCompat="@drawable/medicines13" />
+
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>
