@@ -6,13 +6,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
-import android.widget.ImageButton;
-import android.widget.Toast;
 import android.view.View;
-import android.view.KeyEvent;
 import android.widget.Button;
-
-import com.example.eltur.parkinsonbp.HttpClient.HttpClient;
 
 import java.util.ArrayList;
 
@@ -31,7 +26,7 @@ private ArrayList<String> LinksList = new ArrayList<>();
 
         backToMenuButton = (Button) findViewById(R.id.button2);
         myWebView = (WebView) findViewById(R.id.webview1);
-        connectToDB conn = new connectToDB();
+        ServerService conn = new ServerService();
         LinksList = conn.GetAllLinks();
         myWebView.loadUrl(LinksList.get(LinksList.size()-1));
 

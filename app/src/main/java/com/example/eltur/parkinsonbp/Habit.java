@@ -10,12 +10,10 @@ import android.os.StrictMode;
 import android.support.v4.widget.CompoundButtonCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -25,7 +23,6 @@ import com.example.eltur.parkinsonbp.ServerClass.HabitUpdate;
 import com.example.eltur.parkinsonbp.ServerClass.SubMenu;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -140,7 +137,7 @@ public class Habit extends AppCompatActivity {
 
 
 
-                connectToDB addDataToDB= new connectToDB();
+                ServerService addDataToDB= new ServerService();
 
                 userid = getIntent().getStringExtra("EXTRA_SESSION_ID");
                // String returnVal = addactivities.AddDataToDB(userid,ac,null,null,null,null,null);
@@ -196,7 +193,7 @@ public class Habit extends AppCompatActivity {
     public void AddChkBox()
     {
         final LinearLayout MyFramelaoyoutHabit = (LinearLayout )findViewById(R.id.LinearlayoutHabit);
-        connectToDB conn= new connectToDB();
+        ServerService conn= new ServerService();
         Hergelim = conn.getAllHergelim();
         subMenuList1 = conn.getSubMenuListHabit();
         subMenuGroupId = HttpClient.getSubMenuListHabitMenuGroupId();

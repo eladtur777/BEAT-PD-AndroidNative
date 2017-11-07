@@ -1,10 +1,13 @@
 package com.example.eltur.parkinsonbp.HttpClient;
 
+import com.example.eltur.parkinsonbp.Security.AuthEnc;
+import com.example.eltur.parkinsonbp.Security.RSAUtils;
 import com.example.eltur.parkinsonbp.ServerClass.Activity;
 import com.example.eltur.parkinsonbp.ServerClass.Habit;
 import com.example.eltur.parkinsonbp.ServerClass.Links;
 import com.example.eltur.parkinsonbp.ServerClass.Medicine;
 import com.example.eltur.parkinsonbp.ServerClass.MoodCondition;
+import com.example.eltur.parkinsonbp.ServerClass.Patient;
 import com.example.eltur.parkinsonbp.ServerClass.PatientRecord;
 import com.example.eltur.parkinsonbp.ServerClass.SleepCondition;
 import com.example.eltur.parkinsonbp.ServerClass.SleepDisorder;
@@ -15,19 +18,36 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
+import org.apache.commons.codec.binary.Base64;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.CookieHandler;
+import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.security.InvalidKeyException;
+import java.security.KeyPair;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import static com.example.eltur.parkinsonbp.Utils.UtilsMethod.convertStreamToString;
 
@@ -231,15 +251,15 @@ public class HttpClient {
             outputStream.write(jsonInString.getBytes("UTF-8"));
             outputStream.close();
 
-            //read the body response
-            inputStream = new BufferedInputStream(urlConnection.getInputStream());
-            String result = convertStreamToString(inputStream);
-            System.out.print(result);
-            inputStream.close();
-            if(result.contains("success"))
+//            //read the body response
+//            inputStream = new BufferedInputStream(urlConnection.getInputStream());
+//            String result = convertStreamToString(inputStream);
+//            System.out.print(result);
+//            inputStream.close();
+            if(urlConnection.getResponseCode()==200)
                 return true;
         }catch (ProtocolException prt){
-          //  System.out.println(String.format("Error:%s",pr.getMessage()));
+          //alert(String.format("Error:%s",pr.getMessage()));
         }
         catch (IOException IO){
 
@@ -559,14 +579,56 @@ public class HttpClient {
 
                 inputStream.close();
 
-
-        } catch (ProtocolException pr) {
-            System.out.println(String.format("Error:%s", pr.getMessage()));
         } catch (IOException IO) {
             System.out.println(String.format("Error:%s", IO.getMessage()));
         }
 
         return list;
 
+    }
+
+    public Boolean validateCredentials(Patient patient) throws IOException, JSONException{
+
+        url = new URL("http://localhost:8080/BEAT-PD/encryption-parameters");
+        initiateURLConnection("GET");
+        Gson gson = new Gson();
+        if(urlConnection.getResponseCode()==200){
+            inputStream = new BufferedInputStream(urlConnection.getInputStream());
+            String result = convertStreamToString(inputStream);
+            HashMap serverKey = gson.fromJson(result, HashMap.class);
+            String serverPubKey = (String)serverKey.get("publicKey");
+            if (serverPubKey != null && !serverPubKey.equals("")) {
+                try {
+                    String encryptMsg = RSAUtils.encryptAsString(gson.toJson(patient), serverPubKey);
+                    KeyPair clientKeyPair = RSAUtils.generateKeyPair();
+                    AuthEnc authEnc = new AuthEnc(encryptMsg, Base64.encodeBase64String(clientKeyPair.getPublic().getEncoded()));
+
+
+                    String sessionID = urlConnection.getHeaderField("Set-Cookie").split("=|;")[1];
+                    inputStream.close();
+                    urlConnection.disconnect();
+                    url = new URL("http://localhost:8080/BEAT-PD/Patient/Login");
+                    initiateURLConnection("POST");
+                    urlConnection.setRequestProperty("Cookie", "JSESSIONID=" + sessionID);
+
+                    //write the body
+                    outputStream = urlConnection.getOutputStream();
+                    outputStream.write(gson.toJson(authEnc).getBytes("UTF-8"));
+                    outputStream.close();
+
+
+                    if (urlConnection.getResponseCode() == 200) {
+                        inputStream = new BufferedInputStream(urlConnection.getInputStream());
+                        String response = (String) gson.fromJson(convertStreamToString(inputStream), HashMap.class).get("success");
+                        return (RSAUtils.decrypt(response, clientKeyPair.getPrivate()).equals("OK"));
+                    }
+                }catch (NoSuchPaddingException |NoSuchAlgorithmException |InvalidKeyException |
+                        IllegalBlockSizeException | BadPaddingException |InvalidKeySpecException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        }
+        return false;
     }
 }

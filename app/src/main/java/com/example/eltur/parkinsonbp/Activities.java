@@ -101,7 +101,7 @@ public class Activities extends AppCompatActivity {
 
 
 
-                    connectToDB addactivities= new connectToDB();
+                    ServerService addactivities= new ServerService();
                     userid = getIntent().getStringExtra("EXTRA_SESSION_ID");
 
                     String returnVal = addactivities.AddDataToDB(userid,ac1,null,null,null,null);
@@ -152,7 +152,7 @@ public class Activities extends AppCompatActivity {
     {
 
         final LinearLayout laoyoutActivity = (LinearLayout )findViewById(R.id.LinearlayoutActivity);
-        connectToDB dd = new connectToDB();
+        ServerService dd = new ServerService();
         Activities = dd.getAllActivies();
         cb = new CheckBox[Activities.size()];
         subMenuList1 = HttpClient.getSubMenuListActivities();

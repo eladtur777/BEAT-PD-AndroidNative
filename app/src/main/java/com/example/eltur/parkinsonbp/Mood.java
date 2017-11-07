@@ -74,7 +74,7 @@ public class Mood extends AppCompatActivity {
 
 
                 //TODO:
-                connectToDB addDataToDB= new connectToDB();
+                ServerService addDataToDB= new ServerService();
 
                 userid = getIntent().getStringExtra("EXTRA_SESSION_ID");
                 String returnVal = addDataToDB.AddDataToDB(userid,null,null,null,userchoice,null);
@@ -127,7 +127,7 @@ public class Mood extends AppCompatActivity {
     public void AddChkBox()
     {
         final LinearLayout MyFramelaoyout = (LinearLayout )findViewById(R.id.Linearlayout);
-        connectToDB conn= new connectToDB();
+        ServerService conn= new ServerService();
         //mood.clear();
         MyFramelaoyout.clearAnimation();
 

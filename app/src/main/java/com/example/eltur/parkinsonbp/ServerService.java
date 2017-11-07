@@ -3,11 +3,9 @@ package com.example.eltur.parkinsonbp;
 import com.example.eltur.parkinsonbp.HttpClient.HttpClient;
 import com.example.eltur.parkinsonbp.ServerClass.ActivityUpdate;
 import com.example.eltur.parkinsonbp.ServerClass.HabitUpdate;
-import com.example.eltur.parkinsonbp.ServerClass.Medicine;
 import com.example.eltur.parkinsonbp.ServerClass.MedicineUpdate;
 import com.example.eltur.parkinsonbp.ServerClass.MoodCondition;
 import com.example.eltur.parkinsonbp.ServerClass.PatientRecord;
-import com.example.eltur.parkinsonbp.ServerClass.SleepCondition;
 import com.example.eltur.parkinsonbp.ServerClass.SleepConditionAndDisorder;
 import com.example.eltur.parkinsonbp.ServerClass.SleepDisorder;
 import com.example.eltur.parkinsonbp.ServerClass.SubMenu;
@@ -25,7 +23,7 @@ import java.util.List;
  * Created by Eltur on 28/05/2017.
  */
 
-public class connectToDB {
+public class ServerService {
 
 
 
@@ -42,7 +40,7 @@ public class connectToDB {
     }
 
     public static void setSubMenuList(List<List<SubMenu>> subMenuList) {
-        connectToDB.subMenuList = subMenuList;
+        ServerService.subMenuList = subMenuList;
     }
 
     private static List<List<SubMenu>> subMenuList = new ArrayList<List<SubMenu>>();

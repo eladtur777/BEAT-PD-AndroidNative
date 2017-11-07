@@ -12,24 +12,18 @@ import android.support.v4.widget.CompoundButtonCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
-import com.example.eltur.parkinsonbp.HttpClient.HttpClient;
 import com.example.eltur.parkinsonbp.ServerClass.SleepConditionAndDisorder;
 import com.example.eltur.parkinsonbp.ServerClass.SleepDisorderUpdate;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -69,7 +63,7 @@ public class Sleep extends AppCompatActivity {
                     txtBoxQualitySleep.setInputType(0);
                     if(subMenuSleepQuality.size() > 0) {
                         subMenuSleepQuality.clear();
-                        connectToDB conn1 = new connectToDB();
+                        ServerService conn1 = new ServerService();
                         subMenuSleepQuality = conn1.getAllSleepQualitySubMenu();
                         getPopUpSubMenu(txtBoxQualitySleep);
                     }
@@ -125,7 +119,7 @@ public class Sleep extends AppCompatActivity {
                     return;
                 }
 
-                connectToDB addDataToDB= new connectToDB();
+                ServerService addDataToDB= new ServerService();
                 userid = getIntent().getStringExtra("EXTRA_SESSION_ID");
                 ArrayList<String> arrOfSleepCondition = new ArrayList<String>();
                // arrOfSleepCondition.add(txtBoxHoursNum.getText().toString());
@@ -185,7 +179,7 @@ public class Sleep extends AppCompatActivity {
     public void AddChkBox()
     {
         final LinearLayout MyFramelaoyout = (LinearLayout )findViewById(R.id.Linearlayout);
-        connectToDB conn= new connectToDB();
+        ServerService conn= new ServerService();
        // SleepDisorder.clear();
         MyFramelaoyout.clearAnimation();
 

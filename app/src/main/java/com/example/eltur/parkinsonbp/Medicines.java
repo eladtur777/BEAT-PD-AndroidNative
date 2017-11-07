@@ -15,8 +15,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
-import com.example.eltur.parkinsonbp.HttpClient.HttpClient;
-import com.example.eltur.parkinsonbp.ServerClass.ActivityUpdate;
 import com.example.eltur.parkinsonbp.ServerClass.MedicineUpdate;
 
 import java.util.ArrayList;
@@ -90,7 +88,7 @@ public class Medicines extends AppCompatActivity {
 
 
                 //TODO:
-                connectToDB addDataToDB= new connectToDB();
+                ServerService addDataToDB= new ServerService();
 
                 userid = getIntent().getStringExtra("EXTRA_SESSION_ID");
                 String returnVal = addDataToDB.AddDataToDB(userid,null,null,ma,null,null);
@@ -143,7 +141,7 @@ public class Medicines extends AppCompatActivity {
     public void AddChkBox()
     {
         final LinearLayout MyFramelaoyout = (LinearLayout )findViewById(R.id.Linearlayout);
-        connectToDB conn= new connectToDB();
+        ServerService conn= new ServerService();
         //medicine.clear();
        // MyFramelaoyout.clearAnimation();
 
